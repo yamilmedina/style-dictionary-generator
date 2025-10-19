@@ -1,0 +1,33 @@
+{
+  "name": "style-dictionary-sample",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Style Dictionary for Design Tokens Sample",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npm run build:compose",
+    "build:compose": "tsx build.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamilmedina/style-dictionary-generator.git"
+  },
+  "keywords": [
+    "design",
+    "tokens",
+    "style-dictionary"
+  ],
+  "author": "Yamil Medina",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "style-dictionary": "^5.1.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "chroma-js": "^3.1.2",
+    "glob": "^11.0.0"
+  }
+}
