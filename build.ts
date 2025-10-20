@@ -1,7 +1,13 @@
 import StyleDictionary from 'style-dictionary';
+import {
+  logBrokenReferenceLevels,
+  logVerbosityLevels,
+  logWarningLevels,
+} from 'style-dictionary/enums';
 import { globSync } from 'glob';
 import pxToDpTransformer from './src/android/transfomers/pxToDpTransformer.js';
 import pxToSpTransformer from './src/android/transfomers/pxToSpTransformer.js';
+
 
 // Find all token files matching the pattern
 const tokenFiles = globSync('tokens/**/*.json');
@@ -13,6 +19,13 @@ StyleDictionary.registerTransform(pxToSpTransformer);
 
 // Configure Style Dictionary instance using the predefined compose/object format
 const styleDictionary = new StyleDictionary({
+  log: {
+    warnings: logWarningLevels.warn,
+    verbosity: logVerbosityLevels.verbose, 
+    errors: {
+      brokenReferences: logBrokenReferenceLevels.throw,
+    },
+  },
   source: tokenFiles,
   platforms: {
     compose: {
